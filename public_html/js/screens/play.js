@@ -7,11 +7,11 @@ game.PlayScreen = me.ScreenObject.extend({
 		game.data.score = 0;
                 
                 me.levelDirector.loadLevel("level04");
-                
-                var player = me.pool.pull("mario", 0, 420, {});
-                me.game.world.addChild(player, 3);
+
+                this.resetPlayer(0, 400);
                 
                 me.input.bindKey(me.input.KEY.RIGHT, "right");
+                me.input.bindKey(me.input.KEY.LEFT, "left");
 
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
@@ -25,5 +25,12 @@ game.PlayScreen = me.ScreenObject.extend({
 	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
-	}
+	},
+        
+        resetPlayer: function(x, y){
+            var player = me.pool.pull("mario", x, y, {});
+            me.game.world.addChild(player, 5);
+        }
+        
+         
 });
