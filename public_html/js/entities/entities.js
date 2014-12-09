@@ -24,8 +24,20 @@ game.PlayerEntity = me.Entity.extend({
    update: function(delta){
        if(me.input.isKeyPressed("right")) {
            this.body.vel.x += this.body.accel.x * me.timer.tick;
+           this.flipX(false);
+       }else if(me.input.isKeyPressed("right")) {
+           this.body.vel.x -= this.body.accel.x * me.timer.tick;
+           this.flipX(true);
            
-       }else{
+       }else if(me.input.isKeyPressed("up")) {
+          
+           if(!this.body.jumping){
+                this.body.vel.y -= this.body.accel.x * me.timer.tick;
+                this.body.jumping = false;
+           }
+           
+       }
+       else{
            this.body.vel.x = 0;
        }
        
