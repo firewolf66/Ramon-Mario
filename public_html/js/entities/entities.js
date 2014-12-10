@@ -24,7 +24,7 @@ game.PlayerEntity = me.Entity.extend({
         if (me.input.isKeyPressed("right")) {
             this.body.vel.x += this.body.accel.x * me.timer.tick;
             this.flipX(false);
-        } else if (me.input.isKeyPressed("right")) {
+        } else if (me.input.isKeyPressed("left")) {
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
             this.flipX(true);
 
