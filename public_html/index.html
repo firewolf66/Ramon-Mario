@@ -50,7 +50,7 @@
                         window.scrollTo(0, 1);
                         me.video.onresize(null);
                     }).defer();
-
+                    // This makes the window go back resize, or in other words get back to its normal size.
                     me.event.subscribe(me.event.WINDOW_ONRESIZE, function(e) {
                         window.scrollTo(0, 1);
                     });

@@ -1,13 +1,13 @@
 /* Game namespace */
 var game = {
-    // an object where to store game information
+    // An object where to store game information
     data: {
         // score
         score: 0
     },
-    // Run on page load.
+    // Runs on page load.
     "onload": function() {
-        // Initialize the video.
+        // Initializes the video.
         if (!me.video.init("screen", me.video.CANVAS, 1067, 600, true, 1.0)) {
             alert("Your browser does not support HTML5 canvas.");
             return;
@@ -20,7 +20,7 @@ var game = {
             });
         }
 
-        // Initialize the audio.
+        // Initializes the audio.
         me.audio.init("mp3,ogg");
 
         // Set a callback to run when loading is complete.
@@ -29,10 +29,10 @@ var game = {
         // Load the resources.
         me.loader.preload(game.resources);
 
-        // Initialize melonJS and display a loading screen.
+        // Initializes melonJS and display a loading screen.
         me.state.change(me.state.LOADING);
     },
-    // Run on game resources loaded.
+    // Runs on game and resources loading.
     "loaded": function() {
         me.pool.register("mario", game.PlayerEntity, true);
 
@@ -41,7 +41,7 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
-        // Start the game.
+        // Starts the game.
         me.state.change(me.state.MENU);
 
     }

@@ -13,13 +13,14 @@ game.TitleScreen = me.ScreenObject.extend({
                 this.font = new me.Font("Arial", 46, "white");
 
             },
+//This is what it is going to say on the start page, and or begging page.
             draw: function(renderer) {
                 this.font.draw(renderer.getContext(), "Marioish", 450, 130);
                 this.font.draw(renderer.getContext(), "Press ENTER to Play", 250, 530);
             }
 
         })));
-
+//This action makes it when you push the key down it makes it start, AKA play.
         this.handler = me.event.subscribe(me.event.KEYDOWN, function(action, keyCode, edge) {
             if (action === "start") {
                 me.state.change(me.state.PLAY);

@@ -11,7 +11,8 @@ game.PlayerEntity = me.Entity.extend({
                     return (new me.Rect(0, 0, 30, 128)).toPolygon();
                 }
             }]);
-
+// This is used to make the character walk during the game, which the 8 9 10.. etc
+//  is the step number for the character to use to walk.
         this.renderable.addAnimation("idle", [3]);
         this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13], 80);
 
@@ -20,6 +21,8 @@ game.PlayerEntity = me.Entity.extend({
         this.body.setVelocity(5, 20);
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     },
+    //this is used for the right key wgen is pressed it may make the charcter walk.when the key is pressed.
+    
     update: function(delta) {
         if (me.input.isKeyPressed("right")) {
             this.body.vel.x += this.body.accel.x * me.timer.tick;
@@ -63,7 +66,8 @@ game.PlayerEntity = me.Entity.extend({
 
 
 });
-
+// Level Trigger is what is used to trigger the game to start.
+// This is also used to trigger the levels.
 game.LevelTrigger = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.Entity, 'init', [x, y, settings]);
@@ -72,6 +76,8 @@ game.LevelTrigger = me.Entity.extend({
         this.xSpawn = settings.xSpawn;
         this.ySpawn = settings.ySpawn;
     },
+    // This is used for if their is a collision in the way of mario,
+    // It may either collide or hit the object.
     onCollision: function() {
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         me.levelDirector.loadLevel(this.level);
